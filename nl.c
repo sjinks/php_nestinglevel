@@ -11,7 +11,7 @@
 static void (*old_execute_ex)(zend_execute_data*);
 static void (*old_execute_internal)(zend_execute_data*, zval*);
 #else
-static void (*old_execute_ex)(zend_execute_data* TSRMLC_DC);
+static void (*old_execute_ex)(zend_execute_data* TSRMLS_DC);
 static void (*old_execute_internal)(zend_execute_data*, zend_fcall_info*, int TSRMLS_DC);
 #endif
 
