@@ -4,6 +4,7 @@
 
 #include "php_nl.h"
 #include <Zend/zend.h>
+#include <Zend/zend_execute.h>
 #include <ext/standard/info.h>
 
 #if PHP_VERSION_ID >= 70000
