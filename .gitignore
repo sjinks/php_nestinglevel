@@ -26,3 +26,5 @@ run-tests.php
 modules/
 *.la
 *.*~
+*.gcda
+*.gcno
