@@ -10,7 +10,11 @@ php:
   - 7.1
 
 before_script:
-  - phpize && ./configure CFLAGS="-O2 -Wall -Wextra -Werror -Wno-unused-parameter" --silent && make --silent
+  - phpize && ./configure CFLAGS="-O0 --coverage -Wall -Wextra -Werror -Wno-unused-parameter" LDFLAGS="--coverage" EXTRA_LDFLAGS='-precious-files-regex \.gcno\$$' --silent && make --silent
 
 script:
   - NO_INTERACTIVE=1 make test
+
+after_success:
+  - cp ./.libs/*.gc{da,no} ./
+  - bash <(curl -s https://codecov.io/bash)
