@@ -1,6 +1,6 @@
 # php-nestinglimit
 
-[![Build Status](https://travis-ci.org/sjinks/php_nestinglevel.png?branch=master)](https://travis-ci.org/sjinks/php_nestinglevel) [![codecov](https://codecov.io/gh/sjinks/php_nestinglevel/branch/master/graph/badge.svg)](https://codecov.io/gh/sjinks/php_nestinglevel)
+[![Build Status](https://travis-ci.org/sjinks/php_nestinglevel.png?branch=master)](https://travis-ci.org/sjinks/php_nestinglevel) [![codecov](https://codecov.io/gh/sjinks/php_nestinglevel/branch/master/graph/badge.svg)](https://codecov.io/gh/sjinks/php_nestinglevel) [![Coverity Scan Build Status](https://img.shields.io/coverity/scan/11203.svg)](https://scan.coverity.com/projects/sjinks-php_nestinglevel)
 
 PHP extension to control maximum function nesting level, and not let PHP crash with segmentation fault due to infinite recursion.
 
