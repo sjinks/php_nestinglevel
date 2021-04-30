@@ -4,7 +4,7 @@
 
 PHP extension to control maximum function nesting level, and not let PHP crash with segmentation fault due to infinite recursion.
 
-Tested with PHP 5.5, 5.6, 7.0, 7.1
+Tested with PHP 5.5, 5.6, 7.0, 7.1, 7.2, 7.3, 7.4, 8.0, nightly (currently, it's 8.1)
 
 ## Installing/Configuring
 
