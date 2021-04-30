@@ -1,0 +1,54 @@
+name: Build and Test
+on:
+  push:
+    branches:
+      - "**"
+  workflow_dispatch:
+
+env:
+  CFLAGS: "-O0 --coverage -Wall -Wextra -Werror -Wno-unused-parameter"
+  LDFLAGS: "--coverage"
+  EXTRA_LDFLAGS: '-precious-files-regex \.gcno\$$'
+  NO_INTERACTION: "1"
+  REPORT_EXIT_STATUS: "1"
+
+jobs:
+  ci:
+    if: ${{ !contains(github.event.head_commit.message, '[ci skip]') || github.event_name == 'workflow_dispatch' }}
+    strategy:
+      fail-fast: true
+      matrix:
+        php:
+          - '5.5'
+          - '5.6'
+          - '7.0'
+          - '7.1'
+          - '7.2'
+          - '7.3'
+          - '8.0'
+          - '8.1'
+    name: "Build and Test (PHP ${{ matrix.php }})"
+    runs-on: ubuntu-16.04
+    steps:
+      - name: Check out the source code
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: none
+
+      - name: Build
+        run: phpize && ./configure --silent && make --silent
+
+      - name: Run tests
+        run: make test
+
+      - name: Upload coverage
+        run: |
+          cp ./.libs/*.gc{da,no} ./
+          bash <(curl -s https://codecov.io/bash)
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        if: matrix.php == '7.3'

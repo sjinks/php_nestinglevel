@@ -1,6 +1,5 @@
 --TEST--
 Test module info
---CGI--
 --INI--
 nl.max_level = 5
 --SKIPIF--
