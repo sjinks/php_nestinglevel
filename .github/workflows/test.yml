@@ -35,7 +35,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up PHP
-        uses: shivammathur/setup-php@2.20.0
+        uses: shivammathur/setup-php@3312ea6101295aeda1e702b5d3b641e9717de6d6 # tag=2.20.1
         with:
           php-version: ${{ matrix.php }}
           tools: none
