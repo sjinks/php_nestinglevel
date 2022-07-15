@@ -72,7 +72,7 @@ static PHP_MINIT_FUNCTION(nl)
 {
 	old_execute_ex        = zend_execute_ex;
 	zend_execute_ex       = nl_execute_ex;
-	old_execute_internal  = zend_execute_internal ? zend_execute_internal : execute_internal;
+	old_execute_internal  = zend_execute_internal ? zend_execute_internal : &execute_internal;
 	zend_execute_internal = nl_execute_internal;
 
 	REGISTER_INI_ENTRIES();
@@ -82,7 +82,7 @@ static PHP_MINIT_FUNCTION(nl)
 static PHP_MSHUTDOWN_FUNCTION(nl)
 {
 	zend_execute_ex       = old_execute_ex;
-	zend_execute_internal = (old_execute_internal == execute_internal) ? NULL : old_execute_internal;
+	zend_execute_internal = (old_execute_internal == &execute_internal) ? NULL : old_execute_internal;
 
 	UNREGISTER_INI_ENTRIES();
 	return SUCCESS;
