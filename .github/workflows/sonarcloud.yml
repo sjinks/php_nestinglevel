@@ -68,8 +68,8 @@ jobs:
       - name: Run build-wrapper
         run: |
           phpize
-          ./configure --enable-coverage
-          build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} make coverage
+          ./configure
+          build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} make
         env:
           NO_INTERACTION: "1"
           REPORT_EXIT_STATUS: "1"
@@ -82,5 +82,4 @@ jobs:
         run: |
           sonar-scanner \
             -Dsonar.host.url="${{ env.SONAR_SERVER_URL }}" \
-            -Dsonar.cfamily.build-wrapper-output="${{ env.BUILD_WRAPPER_OUT_DIR }}" \
-            -Dsonar.cfamily.gcov.reportsPath=$(pwd)
+            -Dsonar.cfamily.build-wrapper-output="${{ env.BUILD_WRAPPER_OUT_DIR }}"
