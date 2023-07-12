@@ -27,7 +27,7 @@ jobs:
           tools: none
 
       - name: Install sonar-scanner and build-wrapper
-        uses: SonarSource/sonarcloud-github-c-cpp@v1
+        uses: SonarSource/sonarcloud-github-c-cpp@8d08b4c506dc7a0601ad08b06f73fc9718cea84e # v1
       - name: Run build-wrapper
         run: |
           phpize
