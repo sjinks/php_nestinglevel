@@ -26,6 +26,8 @@ jobs:
           - '8.1'
           - '8.2'
           - '8.3'
+          - '8.4'
+          - '8.5'
     name: "Build and Test (PHP ${{ matrix.php }})"
     runs-on: ubuntu-latest
     steps:
@@ -43,11 +45,3 @@ jobs:
 
       - name: Run tests
         run: make test
-
-      - name: Upload coverage
-        run: |
-          cp ./.libs/*.gc{da,no} ./
-          bash <(curl -s https://codecov.io/bash)
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-        if: matrix.php == '7.4'
